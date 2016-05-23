@@ -1,5 +1,6 @@
 /*
  * Copyright 2015 Uppsala University Library
+ * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -19,15 +20,16 @@
 
 package se.uu.ub.cora.json.builder.org;
 
+import static org.testng.Assert.assertEquals;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import se.uu.ub.cora.json.builder.JsonArrayBuilder;
 import se.uu.ub.cora.json.builder.JsonObjectBuilder;
 import se.uu.ub.cora.json.parser.JsonArray;
 import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.JsonString;
-
-import static org.testng.Assert.assertEquals;
 
 public class OrgJsonArrayBuilderAdapterTest {
 	private JsonArrayBuilder jsonArrayBuilder;
@@ -82,6 +84,16 @@ public class OrgJsonArrayBuilderAdapterTest {
 
 		String json = jsonArrayBuilder.toJsonFormattedString();
 		assertEquals(json, "[{\"keyChild\":\"valueChild\"}]");
+	}
 
+	@Test
+	public void testToJsonFormattedPrettyString() {
+		JsonObjectBuilder jsonObjectBuilderChild = new OrgJsonObjectBuilderAdapter();
+		jsonObjectBuilderChild.addKeyString("keyChild", "valueChild");
+
+		jsonArrayBuilder.addJsonObjectBuilder(jsonObjectBuilderChild);
+
+		String json = jsonArrayBuilder.toJsonFormattedPrettyString();
+		assertEquals(json, "[{\"keyChild\": \"valueChild\"}]");
 	}
 }

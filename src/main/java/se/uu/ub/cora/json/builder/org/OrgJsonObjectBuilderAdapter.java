@@ -1,5 +1,6 @@
 /*
  * Copyright 2015 Uppsala University Library
+ * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -58,4 +59,8 @@ public class OrgJsonObjectBuilderAdapter implements JsonObjectBuilder {
 		return orgJsonObject.toString();
 	}
 
+	@Override
+	public String toJsonFormattedPrettyString() {
+		return orgJsonObject.toString(4);
+	}
 }

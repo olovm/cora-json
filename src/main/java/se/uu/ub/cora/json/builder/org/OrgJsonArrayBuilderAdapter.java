@@ -1,5 +1,6 @@
 /*
  * Copyright 2015 Uppsala University Library
+ * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -59,4 +60,8 @@ public class OrgJsonArrayBuilderAdapter implements JsonArrayBuilder {
 		return orgJsonArray.toString();
 	}
 
+	@Override
+	public String toJsonFormattedPrettyString() {
+		return orgJsonArray.toString(4);
+	}
 }
