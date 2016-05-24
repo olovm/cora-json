@@ -1,5 +1,6 @@
 /*
  * Copyright 2015 Uppsala University Library
+ * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -25,6 +26,7 @@ import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.org.OrgJsonObjectAdapter;
 
 public class OrgJsonObjectBuilderAdapter implements JsonObjectBuilder {
+	private static final int TEXT_INDENT = 4;
 	private org.json.JSONObject orgJsonObject = new org.json.JSONObject();
 
 	@Override
@@ -58,4 +60,8 @@ public class OrgJsonObjectBuilderAdapter implements JsonObjectBuilder {
 		return orgJsonObject.toString();
 	}
 
+	@Override
+	public String toJsonFormattedPrettyString() {
+		return orgJsonObject.toString(TEXT_INDENT);
+	}
 }

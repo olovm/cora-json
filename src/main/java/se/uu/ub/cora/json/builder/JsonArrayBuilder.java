@@ -1,5 +1,6 @@
 /*
  * Copyright 2015 Uppsala University Library
+ * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -33,4 +34,5 @@ public interface JsonArrayBuilder {
 
 	String toJsonFormattedString();
 
+	String toJsonFormattedPrettyString();
 }
