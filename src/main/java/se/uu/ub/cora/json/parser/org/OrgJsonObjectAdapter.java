@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.json.JSONObject;
+
 import se.uu.ub.cora.json.parser.JsonArray;
 import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.JsonParseException;
@@ -54,7 +55,7 @@ public final class OrgJsonObjectAdapter implements JsonObject {
 		try {
 			return tryGetValue(key);
 		} catch (Exception e) {
-			throw new JsonParseException("Json object does not contain requested key", e);
+			throw new JsonParseException("Json object does not contain requested key: " + key, e);
 		}
 	}
 
