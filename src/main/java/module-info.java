@@ -1,5 +1,5 @@
 module se.uu.ub.cora.json {
-	requires org.json;
+	requires transitive org.json;
 
 	exports se.uu.ub.cora.json.builder;
 	exports se.uu.ub.cora.json.builder.org;
