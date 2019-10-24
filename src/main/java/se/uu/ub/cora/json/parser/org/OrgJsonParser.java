@@ -21,6 +21,7 @@ package se.uu.ub.cora.json.parser.org;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import se.uu.ub.cora.json.parser.JsonArray;
 import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.JsonParseException;
@@ -76,7 +77,7 @@ public class OrgJsonParser implements JsonParser {
 
 	private String recreateJsonStringFromJsonValue(JsonValue jsonValue) {
 		String recreatedJsonString = "";
-		if (JsonValueType.OBJECT.equals(jsonValue.getValueType())) {
+		if (JsonValueType.OBJECT == jsonValue.getValueType()) {
 			recreatedJsonString = ((JsonObject) jsonValue).toJsonFormattedString();
 		} else {
 			recreatedJsonString = ((JsonArray) jsonValue).toJsonFormattedString();
