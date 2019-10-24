@@ -67,7 +67,7 @@ public final class OrgJsonObjectAdapter implements JsonObject {
 	@Override
 	public JsonString getValueAsJsonString(String key) {
 		JsonValue jsonValue = getValue(key);
-		if (JsonValueType.STRING.equals(jsonValue.getValueType())) {
+		if (JsonValueType.STRING == jsonValue.getValueType()) {
 			return (JsonString) getValue(key);
 		}
 		throw new JsonParseException("Not a string");
@@ -76,7 +76,7 @@ public final class OrgJsonObjectAdapter implements JsonObject {
 	@Override
 	public JsonObject getValueAsJsonObject(String key) {
 		JsonValue jsonValue = getValue(key);
-		if (JsonValueType.OBJECT.equals(jsonValue.getValueType())) {
+		if (JsonValueType.OBJECT == jsonValue.getValueType()) {
 			return (JsonObject) getValue(key);
 		}
 		throw new JsonParseException("Not an object");
@@ -85,7 +85,7 @@ public final class OrgJsonObjectAdapter implements JsonObject {
 	@Override
 	public JsonArray getValueAsJsonArray(String key) {
 		JsonValue jsonValue = getValue(key);
-		if (JsonValueType.ARRAY.equals(jsonValue.getValueType())) {
+		if (JsonValueType.ARRAY == jsonValue.getValueType()) {
 			return (JsonArray) getValue(key);
 		}
 		throw new JsonParseException("Not an array");
@@ -103,7 +103,7 @@ public final class OrgJsonObjectAdapter implements JsonObject {
 
 	@Override
 	public Set<Entry<String, JsonValue>> entrySet() {
-		Map<String, JsonValue> outSet = new HashMap<>();
+		Map<String, JsonValue> outSet = new HashMap<>(orgJsonObject.length());
 		for (String key : orgJsonObject.keySet()) {
 			Object child = orgJsonObject.get(key);
 			JsonValue jsonValue = OrgJsonValueFactory.createFromOrgJsonObject(child);

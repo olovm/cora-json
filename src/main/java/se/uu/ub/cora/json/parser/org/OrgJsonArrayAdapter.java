@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONArray;
+
 import se.uu.ub.cora.json.parser.JsonArray;
 import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.JsonParseException;
@@ -65,7 +66,7 @@ public final class OrgJsonArrayAdapter implements JsonArray {
 	@Override
 	public JsonString getValueAsJsonString(int index) {
 		JsonValue jsonValue = getValue(index);
-		if (JsonValueType.STRING.equals(jsonValue.getValueType())) {
+		if (JsonValueType.STRING == jsonValue.getValueType()) {
 			return (JsonString) getValue(index);
 		}
 		throw new JsonParseException("Not a string");
@@ -74,7 +75,7 @@ public final class OrgJsonArrayAdapter implements JsonArray {
 	@Override
 	public JsonObject getValueAsJsonObject(int index) {
 		JsonValue jsonValue = getValue(index);
-		if (JsonValueType.OBJECT.equals(jsonValue.getValueType())) {
+		if (JsonValueType.OBJECT == jsonValue.getValueType()) {
 			return (JsonObject) getValue(index);
 		}
 		throw new JsonParseException("Not an object");
@@ -83,7 +84,7 @@ public final class OrgJsonArrayAdapter implements JsonArray {
 	@Override
 	public JsonArray getValueAsJsonArray(int index) {
 		JsonValue jsonValue = getValue(index);
-		if (JsonValueType.ARRAY.equals(jsonValue.getValueType())) {
+		if (JsonValueType.ARRAY == jsonValue.getValueType()) {
 			return (JsonArray) getValue(index);
 		}
 		throw new JsonParseException("Not an object");
@@ -91,7 +92,7 @@ public final class OrgJsonArrayAdapter implements JsonArray {
 
 	@Override
 	public Iterator<JsonValue> iterator() {
-		List<JsonValue> list = new ArrayList<>();
+		List<JsonValue> list = new ArrayList<>(orgJsonArray.length());
 		for (int i = 0; i < orgJsonArray.length(); i++) {
 			list.add(OrgJsonValueFactory.createFromOrgJsonObject(orgJsonArray.get(i)));
 		}
