@@ -31,7 +31,7 @@
     <name>Cora json</name>
 
     <properties>
-        <org.json.version>20180813</org.json.version>
+        <org.json.version>20230227</org.json.version>
     </properties>
 
     <scm>
